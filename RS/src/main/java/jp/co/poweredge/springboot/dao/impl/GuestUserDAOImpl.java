@@ -16,6 +16,9 @@ import jp.co.poweredge.springboot.dto.CustomerUserDTO;
 public class GuestUserDAOImpl implements GuestUserDAO{
 
 	@Autowired
+	CustomerUserDTO customerUserDTO;
+
+	@Autowired
 	public DataSource dataSource;
 
 	@Autowired
@@ -26,8 +29,6 @@ public class GuestUserDAOImpl implements GuestUserDAO{
 		MapSqlParameterSource in = new MapSqlParameterSource();
 		in.addValue("customerUserId", customerUserId);
 		in.addValue("password", password);
-
-
 
 		String SQL = "SELECT" +
 		"					customer_user_id," +
@@ -43,7 +44,7 @@ public class GuestUserDAOImpl implements GuestUserDAO{
 
 		Map<String,Object> map = namedParameterJdbcTemplate.queryForMap(SQL, in);
 
-		CustomerUserDTO customerUserDTO = new CustomerUserDTO();
+
 		customerUserDTO.setCustomerUserId((String)map.get("customer_user_id"));
 		customerUserDTO.setInitFlg((String)map.get("init_flg"));
 
