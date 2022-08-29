@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Merchandise list</h1>
+
+	<table>
+	  <thead>
+	    <tr>
+		      <th>ExhibitionCD</th>
+		      <th>ExhibitionName</th>
+		      <th>Material</th>
+		      <th>SalesUnitPrice</th>
+		      <th>DeliveryTime</th>
+		      <th>Comment</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:if="${!#lists.isEmpty(merchandiseList)}" th:each="merchandiseMaster : ${merchandiseList}">
+			  <td th:text="${merchandiseMaster.merchandiseCd}">/td>
+		      <td th:text="${merchandiseMaster.merchandiseName}">/td>
+		      <td th:text="${merchandiseMaster.material}"></td>
+		      <td th:text="${merchandiseMaster.salesUnitPrice}"></td>
+		      <td th:text="${merchandiseMaster.deliveryTime}"></td>
+		      <td th:text="${merchandiseMaster.comment}"></td>
+	    </tr>
+	  </tbody>
+</table>
+
+</body>
+</html>

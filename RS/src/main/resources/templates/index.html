@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>Exhibition List</h1>
+
+	<table>
+		  <thead>
+		    <tr>
+		      <th>ExhibitionName</th>
+			  <th>ExhibitionCD</th>
+		      <th>ContactMail</th>
+		      <th>StartDate</th>
+		      <th>EndDate</th>
+		      <th>PublicationFlg</th>
+		      <th>OrderWhetherFlg</th>
+		      <th>ReorderFlg</th>
+		      <th>StockManagementFlg</th>
+		      <th>DispSwatchThumnail</th>
+		      <th>SizeColorClass</th>
+		      <th>SispSwatichClass</th>
+		      <th>DeleteFlg</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:if="${!#lists.isEmpty(exhibitionMasterList)}" th:each="exhibitionMasterDTO : ${exhibitionMasterList}">
+      	      <td th:text="${exhibitionMasterDTO.exhibitionCd}">/td>
+		      <td th:text="${exhibitionMasterDTO.exhibitionName}">/td>
+		      <td th:text="${exhibitionMasterDTO.contactMail}"></td>
+		      <td th:text="${exhibitionMasterDTO.startDate}"></td>
+		      <td th:text="${exhibitionMasterDTO.endDate}"></td>
+		      <td th:text="${exhibitionMasterDTO.publicationFlg}"></td>
+		      <td th:text="${exhibitionMasterDTO.orderWhetherFlg}"></td>
+		      <td th:text="${exhibitionMasterDTO.reorderFlg}"></td>
+		      <td th:text="${exhibitionMasterDTO.stockManagementFlg}"></td>
+		      <td th:text="${exhibitionMasterDTO.dispSwatchThumnail}"></td>
+		      <td th:text="${exhibitionMasterDTO.sizeColorClass}"></td>
+		      <td th:text="${exhibitionMasterDTO.dispSwatichClass}"></td>
+		      <td th:text="${exhibitionMasterDTO.deleteFlg}"></td>
+		    </tr>
+		  </tbody>
+	</table>
+
+</body>
+</html>
