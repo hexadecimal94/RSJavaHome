@@ -8,8 +8,10 @@ import jp.co.poweredge.springboot.dao.factory.DAOFactory;
 import jp.co.poweredge.springboot.dao.impl.CustomerMasterDAOImpl;
 import jp.co.poweredge.springboot.dao.impl.ExhibitionMasterDAOImpl;
 import jp.co.poweredge.springboot.dao.impl.GuestUserDAOImpl;
+import jp.co.poweredge.springboot.dao.impl.ImageMasterDAOImpl;
 import jp.co.poweredge.springboot.dto.CustomerUserDTO;
 import jp.co.poweredge.springboot.dto.ExhibitionMasterDTO;
+import jp.co.poweredge.springboot.dto.ImageMasterDTO;
 
 @Component
 public class SqlTestClass implements CommandLineRunner {
@@ -24,6 +26,9 @@ public class SqlTestClass implements CommandLineRunner {
 
 	@Autowired
 	GuestUserDAOImpl guestUserDAOImpl = (GuestUserDAOImpl)jdbcDaoFactory.getGuestUserDAO();
+
+	@Autowired
+	ImageMasterDAOImpl imageMasterDAOImpl = (ImageMasterDAOImpl) jdbcDaoFactory.getImageMasterDAO();
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -49,6 +54,15 @@ public class SqlTestClass implements CommandLineRunner {
 		System.out.println("customerUserDTO init_flg is " + customerUserDTO.getInitFlg());
 
 		System.out.println("customerUserDTO whole object : " + customerUserDTO.toString());
+
+		ImageMasterDTO imageMasterDTO = imageMasterDAOImpl.getImageByImageId("3");
+
+		System.out.println(imageMasterDTO.getContentType());
+
+		byte[] bytearray = imageMasterDTO.getImage();
+
+		String imageString = new String(bytearray);
+        System.out.println(imageString);
 
 	}
 
